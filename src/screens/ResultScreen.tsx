@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ScreenContainer } from '../components/ScreenContainer';
 import { ComicText } from '../components/ComicText';
 import { ComicButton } from '../components/ComicButton';
-import { COLORS } from '../constants/theme';
+import { COLORS, BORDER_RADIUS } from '../constants/theme';
 import { RootStackParamList } from '../types';
 
 type ResultScreenRouteProp = RouteProp<RootStackParamList, 'Result'>;

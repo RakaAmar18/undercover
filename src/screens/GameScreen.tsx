@@ -131,23 +131,23 @@ export const GameScreen = () => {
             {/* Elimination Modal */}
             {eliminationModal.visible && eliminationModal.player && (
                 <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { borderColor: eliminationModal.step === 'CONFIRM' ? COLORS.danger : 'black' }]}>
+                    <View style={[styles.modalContent, { borderColor: eliminationModal.step === 'CONFIRM' ? COLORS.accent : 'black' }]}>
                         {eliminationModal.step === 'CONFIRM' ? (
                             <>
-                                <ComicText variant="h2" color={COLORS.danger}>ELIMINATE?</ComicText>
+                                <ComicText variant="h2" color={COLORS.accent}>ELIMINATE?</ComicText>
                                 <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }}>
                                     Are you sure you want to kick <ComicText variant="body" style={{ fontWeight: 'bold' }}>{eliminationModal.player.name}</ComicText>?
                                 </ComicText>
                                 <View style={{ gap: 10, width: '100%' }}>
-                                    <ComicButton 
-                                        title="YES, KICK THEM!" 
-                                        variant="danger" 
-                                        onPress={confirmElimination} 
+                                    <ComicButton
+                                        title="YES, KICK THEM!"
+                                        variant="danger"
+                                        onPress={confirmElimination}
                                     />
-                                    <ComicButton 
-                                        title="CANCEL" 
-                                        variant="secondary" 
-                                        onPress={() => setEliminationModal({ visible: false, player: null, step: 'CONFIRM' })} 
+                                    <ComicButton
+                                        title="CANCEL"
+                                        variant="secondary"
+                                        onPress={() => setEliminationModal({ visible: false, player: null, step: 'CONFIRM' })}
                                     />
                                 </View>
                             </>
@@ -162,9 +162,9 @@ export const GameScreen = () => {
                                         <ComicText variant="h2" color={COLORS.primary} outline>{eliminationModal.player.word}</ComicText>
                                     </View>
                                 </View>
-                                <ComicButton 
-                                    title="CONTINUE" 
-                                    onPress={closeEliminationModal} 
+                                <ComicButton
+                                    title="CONTINUE"
+                                    onPress={closeEliminationModal}
                                 />
                             </>
                         )}
