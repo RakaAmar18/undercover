@@ -58,7 +58,7 @@ export const RoleRevealScreen = () => {
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.header}>
-                <ComicText variant="h3">PLAYER {currentIndex + 1} / {players.length}</ComicText>
+                <ComicText variant="h3" numberOfLines={1} adjustsFontSizeToFit>PLAYER {currentIndex + 1} / {players.length}</ComicText>
             </View>
 
             <View style={styles.cardContainer}>
@@ -133,17 +133,21 @@ const styles = StyleSheet.create({
         shadowRadius: 0,
     },
     questionMark: {
-        fontSize: 120,
+        fontSize: 100, // Reduced from 120 to prevent clipping
+        marginTop: 20,
         marginBottom: 20,
     },
     wordBox: {
-        backgroundColor: 'black',
-        padding: 20,
-        borderRadius: BORDER_RADIUS,
-        transform: [{ rotate: '-2deg' }],
-    },
-    footer: {
-        height: 80,
-        justifyContent: 'center',
-    }
-});
+        width: '100%',
+            alignItems: 'center',
+            backgroundColor: 'black',
+            paddingVertical: 20,
+            paddingHorizontal: 10,
+            borderRadius: BORDER_RADIUS,
+            transform: [{ rotate: '-2deg' }],
+        },
+        footer: {
+            height: 80,
+            justifyContent: 'center',
+        }
+    });

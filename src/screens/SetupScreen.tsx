@@ -85,7 +85,9 @@ export const SetupScreen = () => {
 
                 {/* Mr. White Toggle Section */}
                 <View style={styles.toggleRow}>
-                    <ComicText variant="h3">Mr. White?</ComicText>
+                    <View style={{ flex: 1 }}>
+                        <ComicText variant="h3">Mr. White?</ComicText>
+                    </View>
                     <TouchableOpacity
                         style={[styles.toggleBtn, hasMrWhite ? styles.toggleOn : styles.toggleOff]}
                         onPress={() => setHasMrWhite(!hasMrWhite)}
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
         borderColor: COLORS.gray,
     },
     valueBox: {
-        width: 40,
+        width: 50, // Increased from 40
         alignItems: 'center',
     },
     toggleRow: {
@@ -186,6 +188,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 2,
         borderTopColor: '#eee',
         marginTop: 10,
+        width: '100%', // Ensure full width
     },
     toggleBtn: {
         paddingVertical: 8,

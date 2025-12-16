@@ -45,7 +45,7 @@ export const PlayerNameScreen = () => {
                 style={{ flex: 1 }}
             >
                 <View style={styles.header}>
-                    <ComicText variant="h2" style={styles.title}>WHO ARE YOU?</ComicText>
+                    <ComicText variant="h2" style={styles.title} numberOfLines={1} adjustsFontSizeToFit>WHO ARE YOU?</ComicText>
                     <ComicText variant="body">Enter player names (optional)</ComicText>
                 </View>
 
