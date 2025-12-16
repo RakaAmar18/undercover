@@ -39,24 +39,21 @@ const styles = StyleSheet.create({
     h1: {
         fontFamily: 'Bangers_400Regular',
         fontSize: 48,
-        lineHeight: 60, 
+        lineHeight: 52, // Just enough to avoid clipping
         letterSpacing: 2,
         textTransform: 'uppercase',
-        paddingVertical: 10,
     },
     h2: {
         fontFamily: 'Bangers_400Regular',
         fontSize: 32,
-        lineHeight: 45,
+        lineHeight: 36,
         letterSpacing: 1.5,
-        paddingVertical: 8,
     },
     h3: {
         fontFamily: 'Bangers_400Regular',
         fontSize: 24,
-        lineHeight: 36,
+        lineHeight: 28,
         letterSpacing: 1,
-        paddingVertical: 6,
     },
     label: {
         fontFamily: 'System', // Fallback or a slightly bold sans
