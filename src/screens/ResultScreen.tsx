@@ -23,12 +23,12 @@ export const ResultScreen = () => {
         <ScreenContainer style={[styles.container, { backgroundColor: color }]}>
             <View style={styles.content}>
                 <View style={styles.headerBadge}>
-                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'UNDERCOVER'}</ComicText>
-                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>WIN!</ComicText>
+                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1} adjustsFontSizeToFit>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'UNDERCOVER'}</ComicText>
+                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1} adjustsFontSizeToFit>WIN!</ComicText>
                 </View>
 
                 <View style={styles.card}>
-                    <ComicText variant="h3" style={{ marginBottom: 15, textDecorationLine: 'underline' }} numberOfLines={1}>MISSION REPORT</ComicText>
+                    <ComicText variant="h3" style={{ marginBottom: 15, textDecorationLine: 'underline', textAlign: 'center', paddingHorizontal: 10 }} numberOfLines={1} adjustsFontSizeToFit>MISSION REPORT</ComicText>
                     <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
                         {players.map(p => (
                             <View key={p.id} style={[styles.row, p.role !== 'CIVILIAN' && styles.impostorRow]}>
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
         transform: [{ rotate: '-3deg' }],
     },
     headerText: {
-        fontSize: 60,
-        lineHeight: 65,
+        fontSize: 54, // Reduced from 60 to prevent clipping
+        lineHeight: 60,
         textShadowColor: 'black',
         textShadowOffset: { width: 4, height: 4 },
         textShadowRadius: 0,
