@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
         borderWidth: 4,
         borderColor: 'white',
         padding: 20, // Add padding to internal content
+        paddingHorizontal: 30, // FINAL: Extra horizontal padding for ? right edge
     },
     cardFront: {
         width: 300,
