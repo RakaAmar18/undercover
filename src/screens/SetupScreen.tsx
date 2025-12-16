@@ -92,7 +92,7 @@ export const SetupScreen = () => {
                         style={[styles.toggleBtn, hasMrWhite ? styles.toggleOn : styles.toggleOff]}
                         onPress={() => setHasMrWhite(!hasMrWhite)}
                     >
-                        <ComicText variant="h3" color={hasMrWhite ? 'white' : COLORS.text}>
+                        <ComicText variant="h3" color={hasMrWhite ? 'white' : COLORS.text} numberOfLines={1} adjustsFontSizeToFit>
                             {hasMrWhite ? 'YES' : 'NO'}
                         </ComicText>
                     </TouchableOpacity>
@@ -177,8 +177,9 @@ const styles = StyleSheet.create({
         borderColor: COLORS.gray,
     },
     valueBox: {
-        width: 50, // Increased from 40
+        width: 60, // Increased from 50 for safety
         alignItems: 'center',
+        justifyContent: 'center',
     },
     toggleRow: {
         flexDirection: 'row',
@@ -191,11 +192,14 @@ const styles = StyleSheet.create({
         width: '100%', // Ensure full width
     },
     toggleBtn: {
-        paddingVertical: 8,
-        paddingHorizontal: 20,
-        borderRadius: 20,
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        borderRadius: 25,
         borderWidth: 2,
         borderColor: 'black',
+        minWidth: 80,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     toggleOn: {
         backgroundColor: COLORS.success,

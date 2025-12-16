@@ -70,7 +70,7 @@ export const RoleRevealScreen = () => {
                     </TouchableOpacity>
                 ) : (
                     <View style={styles.cardFront}>
-                        <ComicText variant="h2" style={{ marginBottom: 20 }}>SECRET WORD</ComicText>
+                        <ComicText variant="h2" style={{ marginBottom: 30, textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit>SECRET WORD</ComicText>
                         <View style={styles.wordBox}>
                             <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{currentPlayer.word}</ComicText>
                         </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderWidth: 4,
         borderColor: 'white',
-        // Comic pattern on back?
+        padding: 20, // Add padding to internal content
     },
     cardFront: {
         width: 300,
@@ -139,15 +139,15 @@ const styles = StyleSheet.create({
     },
     wordBox: {
         width: '100%',
-            alignItems: 'center',
-            backgroundColor: 'black',
-            paddingVertical: 20,
-            paddingHorizontal: 10,
-            borderRadius: BORDER_RADIUS,
-            transform: [{ rotate: '-2deg' }],
-        },
-        footer: {
-            height: 80,
-            justifyContent: 'center',
-        }
-    });
+        alignItems: 'center',
+        backgroundColor: 'black',
+        paddingVertical: 30, // Increased from 20
+        paddingHorizontal: 20, // Increased from 10
+        borderRadius: BORDER_RADIUS,
+        transform: [{ rotate: '-2deg' }],
+    },
+    footer: {
+        height: 80,
+        justifyContent: 'center',
+    }
+});

@@ -155,7 +155,7 @@ export const GameScreen = () => {
                             <>
                                 <ComicText variant="h2" numberOfLines={1} adjustsFontSizeToFit>IDENTITY REVEALED</ComicText>
                                 <View style={{ marginVertical: 20, alignItems: 'center' }}>
-                                    <ComicText variant="h1" color={eliminationModal.player.role === 'CIVILIAN' ? COLORS.success : COLORS.accent} outline>
+                                    <ComicText variant="h1" color={eliminationModal.player.role === 'CIVILIAN' ? COLORS.success : COLORS.accent} outline numberOfLines={1} adjustsFontSizeToFit>
                                         {eliminationModal.player.role}
                                     </ComicText>
                                     <View style={styles.wordBox}>

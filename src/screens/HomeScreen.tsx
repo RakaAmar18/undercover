@@ -62,12 +62,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 64,
-        lineHeight: 70,
+        lineHeight: 80, // Increased from 70 to fix clipping
     },
     titleBottom: {
         fontSize: 64,
-        lineHeight: 70,
-        marginTop: -20,
+        lineHeight: 80, // Increased from 70
+        marginTop: -25, // Adjusted overlap slightly
     },
     subtitle: {
         marginTop: 10,
