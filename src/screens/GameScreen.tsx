@@ -289,9 +289,13 @@ const styles = StyleSheet.create({
     },
     wordBox: {
         backgroundColor: 'black',
-        padding: 20,
+        paddingVertical: 40, // Match RoleRevealScreen safety
+        paddingHorizontal: 25, // Match RoleRevealScreen safety
         borderRadius: BORDER_RADIUS,
-        marginVertical: 20,
+        marginVertical: 10,
+        width: '80%',
+        alignItems: 'center',
+        minHeight: 120, // Match RoleRevealScreen safety
         transform: [{ rotate: '-2deg' }],
     },
     voteBtn: {
