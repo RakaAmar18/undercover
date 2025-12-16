@@ -24,47 +24,46 @@ export const GameScreen = () => {
     const [selectedPeekPlayer, setSelectedPeekPlayer] = useState<Player | null>(null);
     const [isPeekRevealed, setIsPeekRevealed] = useState(false);
 
+    const [eliminationModal, setEliminationModal] = useState<{ visible: boolean, player: Player | null, step: 'CONFIRM' | 'REVEAL' }>({
+        visible: false,
+        player: null,
+        step: 'CONFIRM'
+    });
+
     const handleEliminate = (player: Player) => {
-        Alert.alert(
-            "Eliminate Player?",
-            `Are you sure you want to eliminate ${player.name}?`,
-            [
-                { text: "Cancel", style: "cancel" },
-                {
-                    text: "ELIMINATE",
-                    style: 'destructive',
-                    onPress: () => confirmElimination(player)
-                }
-            ]
-        );
+        setEliminationModal({
+            visible: true,
+            player: player,
+            step: 'CONFIRM'
+        });
     };
 
-    const confirmElimination = (targetPlayer: Player) => {
-        // Reveal identity
-        Alert.alert(
-            "IDENTITY REVEALED!",
-            `${targetPlayer.name} was a ${targetPlayer.role}! \nWord: ${targetPlayer.word}`,
-            [
-                {
-                    text: "OK",
-                    onPress: () => {
-                        const updatedPlayers = players.map(p =>
-                            p.id === targetPlayer.id ? { ...p, isAlive: false } : p
-                        );
-                        setPlayers(updatedPlayers);
+    const confirmElimination = () => {
+        if (!eliminationModal.player) return;
 
-                        // Check win condition
-                        const status = checkWinCondition(updatedPlayers);
-                        if (status !== 'ONGOING') {
-                            navigation.replace('Result', {
-                                winner: status === 'CIVILIAN_WIN' ? 'CIVILIAN' : 'UNDERCOVER',
-                                players: updatedPlayers
-                            });
-                        }
-                    }
-                }
-            ]
+        // Move to reveal step
+        setEliminationModal(prev => ({ ...prev, step: 'REVEAL' }));
+    };
+
+    const closeEliminationModal = () => {
+        if (!eliminationModal.player) return;
+
+        const targetPlayer = eliminationModal.player;
+        const updatedPlayers = players.map(p =>
+            p.id === targetPlayer.id ? { ...p, isAlive: false } : p
         );
+
+        setPlayers(updatedPlayers);
+        setEliminationModal({ visible: false, player: null, step: 'CONFIRM' }); // Reset
+
+        // Check win condition AFTER state update (using local const)
+        const status = checkWinCondition(updatedPlayers);
+        if (status !== 'ONGOING') {
+            navigation.replace('Result', {
+                winner: status === 'CIVILIAN_WIN' ? 'CIVILIAN' : 'UNDERCOVER',
+                players: updatedPlayers
+            });
+        }
     };
 
     const handlePeekRequest = (player: Player) => {
@@ -128,6 +127,50 @@ export const GameScreen = () => {
                     onPress={() => setPeekModalVisible(true)}
                 />
             </View>
+
+            {/* Elimination Modal */}
+            {eliminationModal.visible && eliminationModal.player && (
+                <View style={styles.modalOverlay}>
+                    <View style={[styles.modalContent, { borderColor: eliminationModal.step === 'CONFIRM' ? COLORS.danger : 'black' }]}>
+                        {eliminationModal.step === 'CONFIRM' ? (
+                            <>
+                                <ComicText variant="h2" color={COLORS.danger}>ELIMINATE?</ComicText>
+                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }}>
+                                    Are you sure you want to kick <ComicText variant="body" style={{ fontWeight: 'bold' }}>{eliminationModal.player.name}</ComicText>?
+                                </ComicText>
+                                <View style={{ gap: 10, width: '100%' }}>
+                                    <ComicButton 
+                                        title="YES, KICK THEM!" 
+                                        variant="danger" 
+                                        onPress={confirmElimination} 
+                                    />
+                                    <ComicButton 
+                                        title="CANCEL" 
+                                        variant="secondary" 
+                                        onPress={() => setEliminationModal({ visible: false, player: null, step: 'CONFIRM' })} 
+                                    />
+                                </View>
+                            </>
+                        ) : (
+                            <>
+                                <ComicText variant="h2">IDENTITY REVEALED</ComicText>
+                                <View style={{ marginVertical: 20, alignItems: 'center' }}>
+                                    <ComicText variant="h1" color={eliminationModal.player.role === 'CIVILIAN' ? COLORS.success : COLORS.accent} outline>
+                                        {eliminationModal.player.role}
+                                    </ComicText>
+                                    <View style={styles.wordBox}>
+                                        <ComicText variant="h2" color={COLORS.primary} outline>{eliminationModal.player.word}</ComicText>
+                                    </View>
+                                </View>
+                                <ComicButton 
+                                    title="CONTINUE" 
+                                    onPress={closeEliminationModal} 
+                                />
+                            </>
+                        )}
+                    </View>
+                </View>
+            )}
 
             {peekModalVisible && (
                 <View style={styles.modalOverlay}>
