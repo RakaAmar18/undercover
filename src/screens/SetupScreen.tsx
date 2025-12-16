@@ -192,12 +192,13 @@ const styles = StyleSheet.create({
         width: '100%', // Ensure full width
     },
     toggleBtn: {
-        paddingVertical: 10,
-        paddingHorizontal: 25,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
         borderRadius: 25,
         borderWidth: 2,
         borderColor: 'black',
-        minWidth: 80,
+        width: 90, // Changed from minWidth to fixed width for stable rendering
+        height: 50, // Add fixed height
         alignItems: 'center',
         justifyContent: 'center',
     },
