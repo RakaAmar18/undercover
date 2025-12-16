@@ -17,13 +17,13 @@ export const ResultScreen = () => {
     const { winner, players } = route.params;
 
     const color = winner === 'CIVILIAN' ? COLORS.success : COLORS.accent;
-    const title = winner === 'CIVILIAN' ? 'CIVILIANS WIN!' : 'IMPOSTORS WIN!';
+    const title = winner === 'CIVILIAN' ? 'CIVILIANS WIN!' : 'UNDERCOVER WIN!';
 
     return (
         <ScreenContainer style={[styles.container, { backgroundColor: color }]}>
             <View style={styles.content}>
                 <View style={styles.headerBadge}>
-                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'IMPOSTORS'}</ComicText>
+                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'UNDERCOVER'}</ComicText>
                     <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>WIN!</ComicText>
                 </View>
 
