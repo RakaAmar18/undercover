@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
         shadowRadius: 0,
     },
     questionMark: {
-        fontSize: 60, // EMERGENCY: Reduced from 80 - was still clipping
-        lineHeight: 70, // Tighter
+        fontSize: 50, // FINAL: Reduced from 60 - right edge was still clipping
+        lineHeight: 60,
         marginTop: 30,
         marginBottom: 30,
     },
