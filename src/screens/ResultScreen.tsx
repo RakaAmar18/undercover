@@ -37,7 +37,7 @@ export const ResultScreen = () => {
                                     <ComicText variant="label" color={COLORS.gray}>{p.role}</ComicText>
                                 </View>
                                 <View style={styles.wordBadge}>
-                                    <ComicText variant="body" color="white">{p.word}</ComicText>
+                                    <ComicText variant="body" color="white" adjustsFontSizeToFit numberOfLines={1}>{p.word}</ComicText>
                                 </View>
                             </View>
                         ))}

@@ -159,7 +159,7 @@ export const GameScreen = () => {
                                         {eliminationModal.player.role}
                                     </ComicText>
                                     <View style={styles.wordBox}>
-                                        <ComicText variant="h2" color={COLORS.primary} outline>{eliminationModal.player.word}</ComicText>
+                                        <ComicText variant="h2" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{eliminationModal.player.word}</ComicText>
                                     </View>
                                 </View>
                                 <ComicButton
@@ -205,7 +205,7 @@ export const GameScreen = () => {
                             <>
                                 <ComicText variant="h3">KATAMU ADALAH:</ComicText>
                                 <View style={styles.wordBox}>
-                                    <ComicText variant="h1" color={COLORS.primary} outline>{selectedPeekPlayer.word}</ComicText>
+                                    <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{selectedPeekPlayer.word}</ComicText>
                                 </View>
                                 <ComicButton title="TUTUP SEKARANG" onPress={handlePeekClose} />
                             </>

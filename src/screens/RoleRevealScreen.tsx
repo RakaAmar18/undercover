@@ -72,7 +72,7 @@ export const RoleRevealScreen = () => {
                     <View style={styles.cardFront}>
                         <ComicText variant="h2" style={{ marginBottom: 20 }}>SECRET WORD</ComicText>
                         <View style={styles.wordBox}>
-                            <ComicText variant="h1" color={COLORS.primary} outline>{currentPlayer.word}</ComicText>
+                            <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{currentPlayer.word}</ComicText>
                         </View>
                         <ComicText variant="body" style={{ marginTop: 20, textAlign: 'center' }}>
                             Remember your word!{"\n"}Don't let others see it!
