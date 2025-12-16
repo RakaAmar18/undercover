@@ -122,8 +122,10 @@ const styles = StyleSheet.create({
         borderRadius: BORDER_RADIUS,
         borderWidth: BORDER_WIDTH,
         paddingHorizontal: 15,
+        paddingVertical: 8, // Add vertical padding to prevent clipping
         fontFamily: 'Bangers_400Regular',
         fontSize: 24,
+        lineHeight: 32, // Explicit lineHeight to prevent text clipping
         color: 'black',
     },
     footer: {

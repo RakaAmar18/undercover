@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
         shadowRadius: 0,
     },
     questionMark: {
-        fontSize: 100, // Reduced from 120 to prevent clipping
+        fontSize: 80, // Further reduced from 100 to prevent clipping
+        lineHeight: 90, // Explicit lineHeight for safety
         marginTop: 20,
         marginBottom: 20,
     },
@@ -141,10 +142,11 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         backgroundColor: 'black',
-        paddingVertical: 30, // Increased from 20
-        paddingHorizontal: 20, // Increased from 10
+        paddingVertical: 40, // Further increased from 30
+        paddingHorizontal: 25, // Increased from 20
         borderRadius: BORDER_RADIUS,
         transform: [{ rotate: '-2deg' }],
+        minHeight: 120, // Add minimum height to prevent clipping
     },
     footer: {
         height: 80,
