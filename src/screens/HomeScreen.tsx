@@ -16,10 +16,10 @@ export const HomeScreen = () => {
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.header}>
-                <ComicText variant="h1" color={COLORS.primary} outline style={styles.title}>
+                <ComicText variant="h1" color={COLORS.primary} outline style={styles.title} numberOfLines={1} adjustsFontSizeToFit>
                     UNDER
                 </ComicText>
-                <ComicText variant="h1" color={COLORS.accent} outline style={styles.titleBottom}>
+                <ComicText variant="h1" color={COLORS.accent} outline style={styles.titleBottom} numberOfLines={1} adjustsFontSizeToFit>
                     COVER
                 </ComicText>
                 <ComicText variant="h3" style={styles.subtitle}>
@@ -42,7 +42,7 @@ export const HomeScreen = () => {
             </View>
 
             <View style={styles.footer}>
-                <ComicText variant="label" style={styles.footerText}>CodeByRaka</ComicText>
+                <ComicText variant="label" style={styles.footerText} numberOfLines={1}>CodeByRaka</ComicText>
             </View>
         </ScreenContainer>
     );

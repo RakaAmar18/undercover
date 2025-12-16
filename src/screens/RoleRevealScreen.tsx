@@ -65,7 +65,7 @@ export const RoleRevealScreen = () => {
                 {!isRevealed ? (
                     <TouchableOpacity style={styles.cardBack} onPress={handleReveal} activeOpacity={0.9}>
                         <ComicText variant="h1" color="white" style={styles.questionMark}>?</ComicText>
-                        <ComicText variant="h3" color="white">TAP TO REVEAL</ComicText>
+                        <ComicText variant="h3" color="white" numberOfLines={1}>TAP TO REVEAL</ComicText>
                         <ComicText variant="body" color="white" style={{ marginTop: 10 }} numberOfLines={1} adjustsFontSizeToFit>Pass to {players[currentIndex]?.name || `Player ${currentIndex + 1}`}</ComicText>
                     </TouchableOpacity>
                 ) : (
@@ -74,7 +74,7 @@ export const RoleRevealScreen = () => {
                         <View style={styles.wordBox}>
                             <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{currentPlayer.word}</ComicText>
                         </View>
-                        <ComicText variant="body" style={{ marginTop: 20, textAlign: 'center' }}>
+                        <ComicText variant="body" style={{ marginTop: 20, textAlign: 'center' }} numberOfLines={2}>
                             Remember your word!{"\n"}Don't let others see it!
                         </ComicText>
                     </View>

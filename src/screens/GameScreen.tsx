@@ -85,13 +85,13 @@ export const GameScreen = () => {
         <View style={[styles.playerRow, !item.isAlive && styles.deadPlayer]}>
             <View style={styles.playerInfo}>
                 <View style={[styles.avatar, { backgroundColor: item.isAlive ? COLORS.primary : COLORS.gray }]}>
-                    <ComicText variant="h2">{item.name?.split(' ')[1] ? item.name?.split(' ')[0][0] + item.name?.split(' ')[1][0] : item.name?.substring(0, 2)}</ComicText>
+                    <ComicText variant="h2" numberOfLines={1}>{item.name?.split(' ')[1] ? item.name?.split(' ')[0][0] + item.name?.split(' ')[1][0] : item.name?.substring(0, 2)}</ComicText>
                 </View>
                 <View>
                     <ComicText variant="h3" numberOfLines={1} style={!item.isAlive && { textDecorationLine: 'line-through', color: COLORS.text }}>
                         {item.name}
                     </ComicText>
-                    {!item.isAlive && <ComicText variant="label" color={COLORS.accent}>ELIMINATED</ComicText>}
+                    {!item.isAlive && <ComicText variant="label" color={COLORS.accent} numberOfLines={1}>ELIMINATED</ComicText>}
                 </View>
             </View>
 
@@ -110,7 +110,7 @@ export const GameScreen = () => {
         <ScreenContainer>
             <View style={styles.header}>
                 <ComicText variant="h2" numberOfLines={1} adjustsFontSizeToFit>GAME ON!</ComicText>
-                <ComicText variant="body">Find the impostors.</ComicText>
+                <ComicText variant="body" numberOfLines={1}>Find the impostors.</ComicText>
             </View>
 
             <FlatList
@@ -194,7 +194,7 @@ export const GameScreen = () => {
                             </>
                         ) : !isPeekRevealed ? (
                             <>
-                                <ComicText variant="h2" color={COLORS.accent}>STOP!</ComicText>
+                                <ComicText variant="h2" color={COLORS.accent} numberOfLines={1}>STOP!</ComicText>
                                 <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }} numberOfLines={2}>
                                     Oper HP ke <ComicText variant="h3">{selectedPeekPlayer.name}</ComicText>
                                 </ComicText>

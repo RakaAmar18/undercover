@@ -46,7 +46,7 @@ export const PlayerNameScreen = () => {
             >
                 <View style={styles.header}>
                     <ComicText variant="h2" style={styles.title} numberOfLines={1} adjustsFontSizeToFit>WHO ARE YOU?</ComicText>
-                    <ComicText variant="body">Enter player names (optional)</ComicText>
+                    <ComicText variant="body" numberOfLines={1}>Enter player names (optional)</ComicText>
                 </View>
 
                 <ScrollView
@@ -58,7 +58,7 @@ export const PlayerNameScreen = () => {
                     {names.map((name, index) => (
                         <View key={index} style={styles.inputRow}>
                             <View style={styles.labelBox}>
-                                <ComicText variant="h3" color="white">P{index + 1}</ComicText>
+                                <ComicText variant="h3" color="white" numberOfLines={1}>P{index + 1}</ComicText>
                             </View>
                             <TextInput
                                 style={styles.input}

@@ -17,7 +17,7 @@ export const RulesScreen = () => {
 
             <ScrollView style={styles.scroll}>
                 <View style={styles.section}>
-                    <ComicText variant="h3" color={COLORS.secondary}>1. PERAN</ComicText>
+                    <ComicText variant="h3" color={COLORS.secondary} numberOfLines={1}>1. PERAN</ComicText>
                     <ComicText variant="body">
                         • <ComicText variant="body" style={{ fontWeight: 'bold' }}>WARGA:</ComicText> Dapat kata yang sama. {"\n"}
                         • <ComicText variant="body" style={{ fontWeight: 'bold' }}>UNDERCOVER:</ComicText> Dapat kata yang sedikit beda. {"\n"}
@@ -26,28 +26,28 @@ export const RulesScreen = () => {
                 </View>
 
                 <View style={styles.section}>
-                    <ComicText variant="h3" color={COLORS.secondary}>2. CEK KARTU</ComicText>
+                    <ComicText variant="h3" color={COLORS.secondary} numberOfLines={1}>2. CEK KARTU</ComicText>
                     <ComicText variant="body">
                         Oper HP ke pemain lain. Cukup SATU KALI tap untuk lihat kata, lalu oper lagi. Jangan sampai diintip!
                     </ComicText>
                 </View>
 
                 <View style={styles.section}>
-                    <ComicText variant="h3" color={COLORS.secondary}>3. DISKUSI</ComicText>
+                    <ComicText variant="h3" color={COLORS.secondary} numberOfLines={1}>3. DISKUSI</ComicText>
                     <ComicText variant="body">
                         Jelaskan katamu dalam SATU kalimat. Jangan terlalu jelas (nanti Mr. White tahu!), tapi jangan terlalu abstrak (nanti kamu dicurigai!).
                     </ComicText>
                 </View>
 
                 <View style={styles.section}>
-                    <ComicText variant="h3" color={COLORS.secondary}>4. ELIMINASI</ComicText>
+                    <ComicText variant="h3" color={COLORS.secondary} numberOfLines={1}>4. ELIMINASI</ComicText>
                     <ComicText variant="body">
                         Setelah semua bicara, lakukan VOTE untuk menendang pemain yang dicurigai sebagai Impostor.
                     </ComicText>
                 </View>
 
                 <View style={styles.section}>
-                    <ComicText variant="h3" color={COLORS.secondary}>5. PEMENANG</ComicText>
+                    <ComicText variant="h3" color={COLORS.secondary} numberOfLines={1}>5. PEMENANG</ComicText>
                     <ComicText variant="body">
                         • <ComicText variant="body" style={{ fontWeight: 'bold' }}>WARGA MENANG</ComicText> jika semua penjahat keluar. {"\n"}
                         • <ComicText variant="body" style={{ fontWeight: 'bold' }}>PENJAHAT MENANG</ComicText> jika jumlah mereka {'>='} Warga.

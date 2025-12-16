@@ -25,7 +25,7 @@ const Counter = ({ label, value, min, max, onChange }: { label: string, value: n
             </TouchableOpacity>
 
             <View style={styles.valueBox}>
-                <ComicText variant="h2">{value}</ComicText>
+                <ComicText variant="h2" numberOfLines={1}>{value}</ComicText>
             </View>
 
             <TouchableOpacity
@@ -86,7 +86,7 @@ export const SetupScreen = () => {
                 {/* Mr. White Toggle Section */}
                 <View style={styles.toggleRow}>
                     <View style={{ flex: 1 }}>
-                        <ComicText variant="h3">Mr. White?</ComicText>
+                        <ComicText variant="h3" numberOfLines={1}>Mr. White?</ComicText>
                     </View>
                     <TouchableOpacity
                         style={[styles.toggleBtn, hasMrWhite ? styles.toggleOn : styles.toggleOff]}
@@ -110,7 +110,7 @@ export const SetupScreen = () => {
             </View>
 
             {!isValid && (
-                <ComicText variant="body" style={{ color: COLORS.accent, textAlign: 'center', marginVertical: 10 }}>
+                <ComicText variant="body" style={{ color: COLORS.accent, textAlign: 'center', marginVertical: 10 }} numberOfLines={2}>
                     Must have at least 2 Civilians!
                 </ComicText>
             )}

@@ -23,18 +23,18 @@ export const ResultScreen = () => {
         <ScreenContainer style={[styles.container, { backgroundColor: color }]}>
             <View style={styles.content}>
                 <View style={styles.headerBadge}>
-                    <ComicText variant="h1" color="white" style={styles.headerText}>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'IMPOSTORS'}</ComicText>
-                    <ComicText variant="h1" color="white" style={styles.headerText}>WIN!</ComicText>
+                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'IMPOSTORS'}</ComicText>
+                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1}>WIN!</ComicText>
                 </View>
 
                 <View style={styles.card}>
-                    <ComicText variant="h3" style={{ marginBottom: 15, textDecorationLine: 'underline' }}>MISSION REPORT</ComicText>
+                    <ComicText variant="h3" style={{ marginBottom: 15, textDecorationLine: 'underline' }} numberOfLines={1}>MISSION REPORT</ComicText>
                     <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
                         {players.map(p => (
                             <View key={p.id} style={[styles.row, p.role !== 'CIVILIAN' && styles.impostorRow]}>
                                 <View>
                                     <ComicText variant="body" numberOfLines={1} style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
-                                    <ComicText variant="label" color={COLORS.gray}>{p.role}</ComicText>
+                                    <ComicText variant="label" color={COLORS.gray} numberOfLines={1}>{p.role}</ComicText>
                                 </View>
                                 <View style={styles.wordBadge}>
                                     <ComicText variant="body" color="white" adjustsFontSizeToFit numberOfLines={1}>{p.word}</ComicText>
