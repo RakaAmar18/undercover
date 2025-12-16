@@ -135,7 +135,7 @@ export const GameScreen = () => {
                         {eliminationModal.step === 'CONFIRM' ? (
                             <>
                                 <ComicText variant="h2" color={COLORS.accent} numberOfLines={1} adjustsFontSizeToFit>ELIMINATE?</ComicText>
-                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }}>
+                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }} numberOfLines={3}>
                                     Are you sure you want to kick <ComicText variant="body" style={{ fontWeight: 'bold' }}>{eliminationModal.player.name}</ComicText>?
                                 </ComicText>
                                 <View style={{ gap: 10, width: '100%' }}>
@@ -186,7 +186,7 @@ export const GameScreen = () => {
                                             style={styles.peekItem}
                                             onPress={() => handlePeekRequest(item)}
                                         >
-                                            <ComicText variant="body">{item.name}</ComicText>
+                                            <ComicText variant="body" numberOfLines={1}>{item.name}</ComicText>
                                         </TouchableOpacity>
                                     )}
                                 />
@@ -195,7 +195,7 @@ export const GameScreen = () => {
                         ) : !isPeekRevealed ? (
                             <>
                                 <ComicText variant="h2" color={COLORS.accent}>STOP!</ComicText>
-                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }}>
+                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }} numberOfLines={2}>
                                     Oper HP ke <ComicText variant="h3">{selectedPeekPlayer.name}</ComicText>
                                 </ComicText>
                                 <ComicButton title="SAYA SUDAH PEGANG HP" onPress={handlePeekReveal} />
