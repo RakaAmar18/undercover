@@ -109,7 +109,7 @@ export const GameScreen = () => {
     return (
         <ScreenContainer>
             <View style={styles.header}>
-                <ComicText variant="h2">GAME ON!</ComicText>
+                <ComicText variant="h2" numberOfLines={1} adjustsFontSizeToFit>GAME ON!</ComicText>
                 <ComicText variant="body">Find the impostors.</ComicText>
             </View>
 
@@ -134,7 +134,7 @@ export const GameScreen = () => {
                     <View style={[styles.modalContent, { borderColor: eliminationModal.step === 'CONFIRM' ? COLORS.accent : 'black' }]}>
                         {eliminationModal.step === 'CONFIRM' ? (
                             <>
-                                <ComicText variant="h2" color={COLORS.accent}>ELIMINATE?</ComicText>
+                                <ComicText variant="h2" color={COLORS.accent} numberOfLines={1} adjustsFontSizeToFit>ELIMINATE?</ComicText>
                                 <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }}>
                                     Are you sure you want to kick <ComicText variant="body" style={{ fontWeight: 'bold' }}>{eliminationModal.player.name}</ComicText>?
                                 </ComicText>
@@ -153,7 +153,7 @@ export const GameScreen = () => {
                             </>
                         ) : (
                             <>
-                                <ComicText variant="h2">IDENTITY REVEALED</ComicText>
+                                <ComicText variant="h2" numberOfLines={1} adjustsFontSizeToFit>IDENTITY REVEALED</ComicText>
                                 <View style={{ marginVertical: 20, alignItems: 'center' }}>
                                     <ComicText variant="h1" color={eliminationModal.player.role === 'CIVILIAN' ? COLORS.success : COLORS.accent} outline>
                                         {eliminationModal.player.role}
@@ -177,7 +177,7 @@ export const GameScreen = () => {
                     <View style={styles.modalContent}>
                         {!selectedPeekPlayer ? (
                             <>
-                                <ComicText variant="h3" style={{ marginBottom: 20 }}>SIAPA KAMU?</ComicText>
+                                <ComicText variant="h3" style={{ marginBottom: 20 }} numberOfLines={1} adjustsFontSizeToFit>SIAPA KAMU?</ComicText>
                                 <FlatList
                                     data={players.filter(p => p.isAlive)}
                                     keyExtractor={item => item.id}
@@ -203,7 +203,7 @@ export const GameScreen = () => {
                             </>
                         ) : (
                             <>
-                                <ComicText variant="h3">KATAMU ADALAH:</ComicText>
+                                <ComicText variant="h3" numberOfLines={1} adjustsFontSizeToFit>KATAMU ADALAH:</ComicText>
                                 <View style={styles.wordBox}>
                                     <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{selectedPeekPlayer.word}</ComicText>
                                 </View>

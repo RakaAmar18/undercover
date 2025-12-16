@@ -64,7 +64,7 @@ export const SetupScreen = () => {
 
     return (
         <ScreenContainer style={styles.container}>
-            <ComicText variant="h2" style={styles.header}>GAME SETUP</ComicText>
+            <ComicText variant="h2" style={styles.header} numberOfLines={1} adjustsFontSizeToFit>GAME SETUP</ComicText>
 
             <View style={styles.card}>
                 <Counter

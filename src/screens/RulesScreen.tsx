@@ -12,7 +12,7 @@ export const RulesScreen = () => {
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.header}>
-                <ComicText variant="h2" style={{ textDecorationLine: 'underline' }}>CARA MAIN</ComicText>
+                <ComicText variant="h2" style={{ textDecorationLine: 'underline', width: '100%', textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit>CARA MAIN</ComicText>
             </View>
 
             <ScrollView style={styles.scroll}>
