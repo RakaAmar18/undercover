@@ -88,7 +88,7 @@ export const GameScreen = () => {
                     <ComicText variant="h2">{item.name?.split(' ')[1] ? item.name?.split(' ')[0][0] + item.name?.split(' ')[1][0] : item.name?.substring(0, 2)}</ComicText>
                 </View>
                 <View>
-                    <ComicText variant="h3" style={!item.isAlive && { textDecorationLine: 'line-through', color: COLORS.text }}>
+                    <ComicText variant="h3" numberOfLines={1} style={!item.isAlive && { textDecorationLine: 'line-through', color: COLORS.text }}>
                         {item.name}
                     </ComicText>
                     {!item.isAlive && <ComicText variant="label" color={COLORS.accent}>ELIMINATED</ComicText>}

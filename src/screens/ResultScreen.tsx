@@ -33,7 +33,7 @@ export const ResultScreen = () => {
                         {players.map(p => (
                             <View key={p.id} style={[styles.row, p.role !== 'CIVILIAN' && styles.impostorRow]}>
                                 <View>
-                                    <ComicText variant="body" style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
+                                    <ComicText variant="body" numberOfLines={1} style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
                                     <ComicText variant="label" color={COLORS.gray}>{p.role}</ComicText>
                                 </View>
                                 <View style={styles.wordBadge}>
