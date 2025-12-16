@@ -85,23 +85,24 @@ export const GameScreen = () => {
     const renderPlayer = ({ item }: { item: Player }) => (
         <View style={[styles.playerRow, !item.isAlive && styles.deadPlayer]}>
             <View style={styles.playerInfo}>
-                <View style={styles.avatar}>
+                <View style={[styles.avatar, { backgroundColor: item.isAlive ? COLORS.primary : COLORS.gray }]}>
                     <ComicText variant="h2">{item.name?.split(' ')[1] ? item.name?.split(' ')[0][0] + item.name?.split(' ')[1][0] : item.name?.substring(0, 2)}</ComicText>
                 </View>
-                <ComicText variant="h3" style={!item.isAlive && { textDecorationLine: 'line-through', color: COLORS.gray }}>
-                    {item.name}
-                </ComicText>
+                <View>
+                    <ComicText variant="h3" style={!item.isAlive && { textDecorationLine: 'line-through', color: COLORS.text }}>
+                        {item.name}
+                    </ComicText>
+                    {!item.isAlive && <ComicText variant="label" color={COLORS.accent}>ELIMINATED</ComicText>}
+                </View>
             </View>
 
-            {item.isAlive ? (
-                <ComicButton
-                    title="VOTE"
-                    variant="danger"
+            {item.isAlive && (
+                <TouchableOpacity
+                    style={styles.voteBtn}
                     onPress={() => handleEliminate(item)}
-                    style={{ transform: [{ scale: 0.8 }] }}
-                />
-            ) : (
-                <ComicText variant="label" color={COLORS.accent}>ELIMINATED</ComicText>
+                >
+                    <ComicText variant="h3" color="white">❌</ComicText>
+                </TouchableOpacity>
             )}
         </View>
     );
@@ -249,5 +250,19 @@ const styles = StyleSheet.create({
         borderRadius: BORDER_RADIUS,
         marginVertical: 20,
         transform: [{ rotate: '-2deg' }],
+    },
+    voteBtn: {
+        backgroundColor: COLORS.accent,
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 2,
+        borderColor: 'black',
+        shadowColor: 'black',
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 0,
     }
 });

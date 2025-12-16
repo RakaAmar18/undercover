@@ -124,7 +124,9 @@ export const SetupScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 60,
+        flex: 1,
+        justifyContent: 'center',
+        paddingHorizontal: 20,
     },
     header: {
         textAlign: 'center',

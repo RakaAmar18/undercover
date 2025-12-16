@@ -52,7 +52,7 @@ export const PlayerNameScreen = () => {
                 <ScrollView
                     ref={scrollViewRef}
                     style={styles.scroll}
-                    contentContainerStyle={styles.scrollContent}
+                    contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 20, paddingBottom: 20 }}
                     showsVerticalScrollIndicator={false}
                 >
                     {names.map((name, index) => (

@@ -21,24 +21,34 @@ export const ResultScreen = () => {
 
     return (
         <ScreenContainer style={[styles.container, { backgroundColor: color }]}>
-            <View style={styles.card}>
-                <ComicText variant="h1" style={styles.title} color={color} outline>{title}</ComicText>
+            <View style={styles.content}>
+                <View style={styles.headerBadge}>
+                    <ComicText variant="h1" color="white" style={styles.headerText}>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'IMPOSTORS'}</ComicText>
+                    <ComicText variant="h1" color="white" style={styles.headerText}>WIN!</ComicText>
+                </View>
 
-                <ComicText variant="h3" style={{ marginBottom: 10 }}>Roles Revealed:</ComicText>
-                <ScrollView style={styles.list}>
-                    {players.map(p => (
-                        <View key={p.id} style={styles.row}>
-                            <ComicText variant="body" style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
-                            <ComicText variant="body">{p.role} ({p.word})</ComicText>
-                        </View>
-                    ))}
-                </ScrollView>
+                <View style={styles.card}>
+                    <ComicText variant="h3" style={{ marginBottom: 15, textDecorationLine: 'underline' }}>MISSION REPORT</ComicText>
+                    <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
+                        {players.map(p => (
+                            <View key={p.id} style={[styles.row, p.role !== 'CIVILIAN' && styles.impostorRow]}>
+                                <View>
+                                    <ComicText variant="body" style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
+                                    <ComicText variant="label" color={COLORS.gray}>{p.role}</ComicText>
+                                </View>
+                                <View style={styles.wordBadge}>
+                                    <ComicText variant="body" color="white">{p.word}</ComicText>
+                                </View>
+                            </View>
+                        ))}
+                    </ScrollView>
 
-                <ComicButton
-                    title="PLAY AGAIN"
-                    onPress={() => navigation.popToTop()}
-                    style={{ marginTop: 20 }}
-                />
+                    <ComicButton
+                        title="PLAY AGAIN"
+                        onPress={() => navigation.popToTop()}
+                        style={{ marginTop: 20, width: '100%' }}
+                    />
+                </View>
             </View>
         </ScreenContainer>
     );
@@ -46,34 +56,62 @@ export const ResultScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+    },
+    content: {
+        flex: 1,
         justifyContent: 'center',
         padding: 20,
     },
+    headerBadge: {
+        marginBottom: 30,
+        alignItems: 'center',
+        transform: [{ rotate: '-3deg' }],
+    },
+    headerText: {
+        fontSize: 60,
+        lineHeight: 65,
+        textShadowColor: 'black',
+        textShadowOffset: { width: 4, height: 4 },
+        textShadowRadius: 0,
+    },
     card: {
         backgroundColor: 'white',
-        padding: 30,
-        borderRadius: 20,
+        padding: 25,
+        borderRadius: BORDER_RADIUS,
         borderWidth: 4,
         borderColor: 'black',
         alignItems: 'center',
-        maxHeight: '80%',
-    },
-    title: {
-        textAlign: 'center',
-        fontSize: 50,
-        marginBottom: 30,
-        transform: [{ rotate: '-2deg' }],
+        maxHeight: '70%',
+        width: '100%',
+        shadowColor: 'black',
+        shadowOffset: { width: 8, height: 8 },
+        shadowOpacity: 1,
+        shadowRadius: 0,
     },
     list: {
         width: '100%',
-        marginBottom: 20,
     },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 8,
-        borderBottomWidth: 1,
-        borderBottomColor: '#eee',
-        paddingBottom: 4,
+        alignItems: 'center',
+        marginBottom: 10,
+        backgroundColor: '#F8F9FA',
+        padding: 10,
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: 'black',
+    },
+    impostorRow: {
+        backgroundColor: '#FFF0F5', // Light pinkish for bad guys
+        borderColor: COLORS.accent,
+    },
+    wordBadge: {
+        backgroundColor: 'black',
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        borderRadius: 5,
+        transform: [{ rotate: '2deg' }],
     }
 });
