@@ -59,15 +59,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 60,
         transform: [{ rotate: '-5deg' }], // Jaunty angle
+        paddingHorizontal: 20, // FINAL: Extra horizontal space for R clipping
     },
     title: {
         fontSize: 64,
-        lineHeight: 95, // EMERGENCY: Increased from 85 - still clipping
+        lineHeight: 100, // FINAL: Increased from 95 - R was still clipping
     },
     titleBottom: {
         fontSize: 64,
-        lineHeight: 95, // EMERGENCY: Increased from 85
-        marginTop: -32, // Tighter overlap to compensate
+        lineHeight: 100, // FINAL: Increased from 95
+        marginTop: -35, // Adjust overlap for new lineHeight
     },
     subtitle: {
         marginTop: 10,
