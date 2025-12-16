@@ -12,7 +12,9 @@ type SetupScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, '
 
 const Counter = ({ label, value, min, max, onChange }: { label: string, value: number, min: number, max: number, onChange: (v: number) => void }) => (
     <View style={styles.counterContainer}>
-        <ComicText variant="h3">{label}</ComicText>
+        <View style={{ flex: 1, paddingRight: 10 }}>
+            <ComicText variant="h3" numberOfLines={1} adjustsFontSizeToFit>{label}</ComicText>
+        </View>
         <View style={styles.counterControls}>
             <TouchableOpacity
                 style={[styles.counterBtn, value <= min && styles.counterBtnDisabled]}
