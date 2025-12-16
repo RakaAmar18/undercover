@@ -66,7 +66,7 @@ export const RoleRevealScreen = () => {
                     <TouchableOpacity style={styles.cardBack} onPress={handleReveal} activeOpacity={0.9}>
                         <ComicText variant="h1" color="white" style={styles.questionMark}>?</ComicText>
                         <ComicText variant="h3" color="white">TAP TO REVEAL</ComicText>
-                        <ComicText variant="body" color="white" style={{ marginTop: 10 }}>Pass to {players[currentIndex]?.name || `Player ${currentIndex + 1}`}</ComicText>
+                        <ComicText variant="body" color="white" style={{ marginTop: 10 }} numberOfLines={1} adjustsFontSizeToFit>Pass to {players[currentIndex]?.name || `Player ${currentIndex + 1}`}</ComicText>
                     </TouchableOpacity>
                 ) : (
                     <View style={styles.cardFront}>

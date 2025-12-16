@@ -56,7 +56,7 @@ export const ComicButton: React.FC<ComicButtonProps> = ({
                     { backgroundColor: colors.bg }
                 ]}
             >
-                <ComicText variant="h3" color={colors.text} style={styles.text}>{title}</ComicText>
+                <ComicText variant="h3" color={colors.text} style={styles.text} numberOfLines={1} adjustsFontSizeToFit>{title}</ComicText>
             </TouchableOpacity>
         </Animated.View>
     );
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
         marginRight: 4,
     },
     text: {
-        paddingBottom: 2, // Font alignment fix
+        textAlign: 'center',
     }
 });
