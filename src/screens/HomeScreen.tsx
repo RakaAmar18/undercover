@@ -40,6 +40,10 @@ export const HomeScreen = () => {
                     style={styles.button}
                 />
             </View>
+
+            <View style={styles.footer}>
+                <ComicText variant="label" style={styles.footerText}>CodeByRaka</ComicText>
+            </View>
         </ScreenContainer>
     );
 };
@@ -79,4 +83,13 @@ const styles = StyleSheet.create({
     button: {
         marginBottom: 20,
     },
+    footer: {
+        position: 'absolute',
+        bottom: 20,
+        alignSelf: 'center',
+    },
+    footerText: {
+        color: 'black',
+        opacity: 0.5,
+    }
 });
