@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { HomeScreen } from './src/screens/HomeScreen';
 import { SetupScreen } from './src/screens/SetupScreen';
+import { PlayerNameScreen } from './src/screens/PlayerNameScreen';
 import { RoleRevealScreen } from './src/screens/RoleRevealScreen';
 import { GameScreen } from './src/screens/GameScreen';
 import { ResultScreen } from './src/screens/ResultScreen';
@@ -40,6 +41,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Rules" component={RulesScreen} options={{ presentation: 'modal' }} />
         <Stack.Screen name="Setup" component={SetupScreen} />
+        <Stack.Screen name="PlayerName" component={PlayerNameScreen} />
         <Stack.Screen name="RoleReveal" component={RoleRevealScreen} />
         <Stack.Screen
           name="Game"

@@ -16,7 +16,7 @@ type RoleRevealNavProp = NativeStackNavigationProp<RootStackParamList, 'RoleReve
 export const RoleRevealScreen = () => {
     const navigation = useNavigation<RoleRevealNavProp>();
     const route = useRoute<RoleRevealRouteProp>();
-    const { settings } = route.params;
+    const { settings, playerNames } = route.params;
 
     const [players, setPlayers] = useState<Player[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,8 +25,17 @@ export const RoleRevealScreen = () => {
     // Generate players on mount
     useEffect(() => {
         const wordPair = getRandomWord();
-        const newPlayers = generatePlayers(settings, wordPair);
-        setPlayers(newPlayers);
+        // Modify generatePlayers to accept names, or map them afterwards
+        // Since generatePlayers probably generates "Player N", we can map over it
+        const generatedPlayers = generatePlayers(settings, wordPair);
+
+        // Overwrite names if provided
+        const namedPlayers = generatedPlayers.map((p, i) => ({
+            ...p,
+            name: playerNames && playerNames[i] ? playerNames[i] : p.name
+        }));
+
+        setPlayers(namedPlayers);
     }, []);
 
     const currentPlayer = players[currentIndex];
@@ -57,7 +66,7 @@ export const RoleRevealScreen = () => {
                     <TouchableOpacity style={styles.cardBack} onPress={handleReveal} activeOpacity={0.9}>
                         <ComicText variant="h1" color="white" style={styles.questionMark}>?</ComicText>
                         <ComicText variant="h3" color="white">TAP TO REVEAL</ComicText>
-                        <ComicText variant="body" color="white" style={{ marginTop: 10 }}>Pass to Player {currentIndex + 1}</ComicText>
+                        <ComicText variant="body" color="white" style={{ marginTop: 10 }}>Pass to {players[currentIndex]?.name || `Player ${currentIndex + 1}`}</ComicText>
                     </TouchableOpacity>
                 ) : (
                     <View style={styles.cardFront}>

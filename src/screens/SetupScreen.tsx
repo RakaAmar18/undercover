@@ -51,7 +51,7 @@ export const SetupScreen = () => {
     const isValid = totalPlayers > (undercovers + actualMrWhite + 1);
 
     const handleStart = () => {
-        navigation.navigate('RoleReveal', {
+        navigation.navigate('PlayerName', {
             settings: {
                 totalPlayers,
                 undercoverCount: undercovers,

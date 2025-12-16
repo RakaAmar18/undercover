@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, FlatList, Alert } from 'react-native';
+import { View, StyleSheet, FlatList, Alert, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ScreenContainer } from '../components/ScreenContainer';
@@ -19,6 +19,10 @@ export const GameScreen = () => {
     // Initialize from params, but keep local state for eliminations
     const [players, setPlayers] = useState<Player[]>(route.params.players);
     const [round, setRound] = useState(1);
+
+    const [peekModalVisible, setPeekModalVisible] = useState(false);
+    const [selectedPeekPlayer, setSelectedPeekPlayer] = useState<Player | null>(null);
+    const [isPeekRevealed, setIsPeekRevealed] = useState(false);
 
     const handleEliminate = (player: Player) => {
         Alert.alert(
@@ -63,11 +67,26 @@ export const GameScreen = () => {
         );
     };
 
+    const handlePeekRequest = (player: Player) => {
+        setSelectedPeekPlayer(player);
+        setIsPeekRevealed(false);
+    };
+
+    const handlePeekReveal = () => {
+        setIsPeekRevealed(true);
+    };
+
+    const handlePeekClose = () => {
+        setPeekModalVisible(false);
+        setSelectedPeekPlayer(null);
+        setIsPeekRevealed(false);
+    };
+
     const renderPlayer = ({ item }: { item: Player }) => (
         <View style={[styles.playerRow, !item.isAlive && styles.deadPlayer]}>
             <View style={styles.playerInfo}>
                 <View style={styles.avatar}>
-                    <ComicText variant="h2">{item.name?.split(' ')[1]}</ComicText>
+                    <ComicText variant="h2">{item.name?.split(' ')[1] ? item.name?.split(' ')[0][0] + item.name?.split(' ')[1][0] : item.name?.substring(0, 2)}</ComicText>
                 </View>
                 <ComicText variant="h3" style={!item.isAlive && { textDecorationLine: 'line-through', color: COLORS.gray }}>
                     {item.name}
@@ -100,6 +119,56 @@ export const GameScreen = () => {
                 keyExtractor={item => item.id}
                 contentContainerStyle={styles.list}
             />
+
+            <View style={styles.footer}>
+                <ComicButton
+                    title="LUPA KATA? (DANGER!)"
+                    variant="secondary"
+                    onPress={() => setPeekModalVisible(true)}
+                />
+            </View>
+
+            {peekModalVisible && (
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        {!selectedPeekPlayer ? (
+                            <>
+                                <ComicText variant="h3" style={{ marginBottom: 20 }}>SIAPA KAMU?</ComicText>
+                                <FlatList
+                                    data={players.filter(p => p.isAlive)}
+                                    keyExtractor={item => item.id}
+                                    renderItem={({ item }) => (
+                                        <TouchableOpacity
+                                            style={styles.peekItem}
+                                            onPress={() => handlePeekRequest(item)}
+                                        >
+                                            <ComicText variant="body">{item.name}</ComicText>
+                                        </TouchableOpacity>
+                                    )}
+                                />
+                                <ComicButton title="CANCEL" onPress={() => setPeekModalVisible(false)} variant="secondary" style={{ marginTop: 20 }} />
+                            </>
+                        ) : !isPeekRevealed ? (
+                            <>
+                                <ComicText variant="h2" color={COLORS.accent}>STOP!</ComicText>
+                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }}>
+                                    Oper HP ke <ComicText variant="h3">{selectedPeekPlayer.name}</ComicText>
+                                </ComicText>
+                                <ComicButton title="SAYA SUDAH PEGANG HP" onPress={handlePeekReveal} />
+                                <ComicButton title="BATAL" onPress={() => setSelectedPeekPlayer(null)} variant="secondary" style={{ marginTop: 10 }} />
+                            </>
+                        ) : (
+                            <>
+                                <ComicText variant="h3">KATAMU ADALAH:</ComicText>
+                                <View style={styles.wordBox}>
+                                    <ComicText variant="h1" color={COLORS.primary} outline>{selectedPeekPlayer.word}</ComicText>
+                                </View>
+                                <ComicButton title="TUTUP SEKARANG" onPress={handlePeekClose} />
+                            </>
+                        )}
+                    </View>
+                </View>
+            )}
         </ScreenContainer>
     );
 };
@@ -111,7 +180,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     list: {
-        paddingBottom: 40,
+        paddingBottom: 100, // Space for footer
     },
     playerRow: {
         flexDirection: 'row',
@@ -146,5 +215,39 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,
+    },
+    footer: {
+        position: 'absolute',
+        bottom: 20,
+        left: 20,
+        right: 20,
+    },
+    modalOverlay: {
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        justifyContent: 'center',
+        padding: 20,
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: BORDER_RADIUS,
+        borderWidth: BORDER_WIDTH,
+        alignItems: 'center',
+    },
+    peekItem: {
+        padding: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+        width: '100%',
+        alignItems: 'center',
+    },
+    wordBox: {
+        backgroundColor: 'black',
+        padding: 20,
+        borderRadius: BORDER_RADIUS,
+        marginVertical: 20,
+        transform: [{ rotate: '-2deg' }],
     }
 });
