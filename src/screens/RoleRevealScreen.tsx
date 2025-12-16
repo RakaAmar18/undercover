@@ -70,7 +70,7 @@ export const RoleRevealScreen = () => {
                     </TouchableOpacity>
                 ) : (
                     <View style={styles.cardFront}>
-                        <ComicText variant="h2" style={{ marginBottom: 30, textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit>SECRET WORD</ComicText>
+                        <ComicText variant="h2" style={{ marginBottom: 40, textAlign: 'center', paddingHorizontal: 20 }} numberOfLines={1} adjustsFontSizeToFit>SECRET WORD</ComicText>
                         <View style={styles.wordBox}>
                             <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{currentPlayer.word}</ComicText>
                         </View>
@@ -133,20 +133,20 @@ const styles = StyleSheet.create({
         shadowRadius: 0,
     },
     questionMark: {
-        fontSize: 80, // Further reduced from 100 to prevent clipping
-        lineHeight: 90, // Explicit lineHeight for safety
-        marginTop: 20,
-        marginBottom: 20,
+        fontSize: 60, // EMERGENCY: Reduced from 80 - was still clipping
+        lineHeight: 70, // Tighter
+        marginTop: 30,
+        marginBottom: 30,
     },
     wordBox: {
         width: '100%',
         alignItems: 'center',
         backgroundColor: 'black',
-        paddingVertical: 40, // Further increased from 30
-        paddingHorizontal: 25, // Increased from 20
+        paddingVertical: 60, // EMERGENCY: Increased from 40 - was still clipping
+        paddingHorizontal: 30, // EMERGENCY: Increased from 25
         borderRadius: BORDER_RADIUS,
         transform: [{ rotate: '-2deg' }],
-        minHeight: 120, // Add minimum height to prevent clipping
+        minHeight: 150, // EMERGENCY: Increased from 120
     },
     footer: {
         height: 80,
