@@ -22,9 +22,9 @@ export const ResultScreen = () => {
     return (
         <ScreenContainer style={[styles.container, { backgroundColor: color }]}>
             <View style={styles.content}>
-                <View style={styles.headerBadge}>
-                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1} adjustsFontSizeToFit>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'UNDERCOVER'}</ComicText>
-                    <ComicText variant="h1" color="white" style={styles.headerText} numberOfLines={1} adjustsFontSizeToFit>WIN!</ComicText>
+                <View style={[styles.headerBadge, { width: '100%' }]}>
+                    <ComicText variant="h1" color="white" style={[styles.headerText, { width: '100%', textAlign: 'center' }]} numberOfLines={1} adjustsFontSizeToFit>{winner === 'CIVILIAN' ? 'CIVILIANS' : 'UNDERCOVER'}</ComicText>
+                    <ComicText variant="h1" color="white" style={[styles.headerText, { width: '100%', textAlign: 'center' }]} numberOfLines={1} adjustsFontSizeToFit>WIN!</ComicText>
                 </View>
 
                 <View style={styles.card}>
@@ -32,8 +32,8 @@ export const ResultScreen = () => {
                     <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
                         {players.map(p => (
                             <View key={p.id} style={[styles.row, p.role !== 'CIVILIAN' && styles.impostorRow]}>
-                                <View>
-                                    <ComicText variant="body" numberOfLines={1} style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
+                                <View style={{ flex: 1, paddingRight: 5 }}>
+                                    <ComicText variant="body" numberOfLines={1} adjustsFontSizeToFit style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
                                     <ComicText variant="label" color={COLORS.gray} numberOfLines={1}>{p.role}</ComicText>
                                 </View>
                                 <View style={styles.wordBadge}>

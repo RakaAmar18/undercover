@@ -64,15 +64,24 @@ export const RoleRevealScreen = () => {
             <View style={styles.cardContainer}>
                 {!isRevealed ? (
                     <TouchableOpacity style={styles.cardBack} onPress={handleReveal} activeOpacity={0.9}>
-                        <ComicText variant="h1" color="white" style={styles.questionMark}>?</ComicText>
-                        <ComicText variant="h3" color="white" numberOfLines={1}>TAP TO REVEAL</ComicText>
+                        <ComicText variant="h1" color="white" style={styles.questionMark} adjustsFontSizeToFit>?</ComicText>
+                        <ComicText variant="h3" color="white" numberOfLines={1} adjustsFontSizeToFit>TAP TO REVEAL</ComicText>
                         <ComicText variant="body" color="white" style={{ marginTop: 10 }} numberOfLines={1} adjustsFontSizeToFit>Pass to {players[currentIndex]?.name || `Player ${currentIndex + 1}`}</ComicText>
                     </TouchableOpacity>
                 ) : (
                     <View style={styles.cardFront}>
                         <ComicText variant="h2" style={{ marginBottom: 40, textAlign: 'center', paddingHorizontal: 20 }} numberOfLines={1} adjustsFontSizeToFit>SECRET WORD</ComicText>
                         <View style={styles.wordBox}>
-                            <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{currentPlayer.word}</ComicText>
+                            <ComicText
+                                variant="h1"
+                                color={COLORS.primary}
+                                outline
+                                adjustsFontSizeToFit
+                                numberOfLines={1}
+                                style={{ width: '100%', textAlign: 'center' }}
+                            >
+                                {currentPlayer.word}
+                            </ComicText>
                         </View>
                         <ComicText variant="body" style={{ marginTop: 20, textAlign: 'center' }} numberOfLines={2}>
                             Remember your word!{"\n"}Don't let others see it!
@@ -143,8 +152,8 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         backgroundColor: 'black',
-        paddingVertical: 60, // EMERGENCY: Increased from 40 - was still clipping
-        paddingHorizontal: 30, // EMERGENCY: Increased from 25
+        paddingVertical: 60,
+        paddingHorizontal: 10, // FINAL: Reduced from 30 to prevent word clipping
         borderRadius: BORDER_RADIUS,
         transform: [{ rotate: '-2deg' }],
         minHeight: 150, // EMERGENCY: Increased from 120

@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         borderColor: COLORS.gray,
     },
     valueBox: {
-        width: 60, // Increased from 50 for safety
+        width: 70, // Increased from 60 to prevent large numbers from clipping
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -192,13 +192,13 @@ const styles = StyleSheet.create({
         width: '100%', // Ensure full width
     },
     toggleBtn: {
-        paddingVertical: 12,
-        paddingHorizontal: 20,
+        // paddingVertical: 12, // REMOVED: Caused clipping with large font
+        paddingHorizontal: 10, // Reduced from 20 to ensure text fits
         borderRadius: 25,
         borderWidth: 2,
         borderColor: 'black',
-        width: 90, // Changed from minWidth to fixed width for stable rendering
-        height: 50, // Add fixed height
+        width: 90,
+        height: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 60,
         transform: [{ rotate: '-5deg' }], // Jaunty angle
-        paddingHorizontal: 20, // FINAL: Extra horizontal space for R clipping
+        paddingHorizontal: 5, // FINAL: Reduced from 20 to prevent text from being cut off
     },
     title: {
         fontSize: 64,

@@ -39,20 +39,20 @@ const styles = StyleSheet.create({
     h1: {
         fontFamily: 'Bangers_400Regular',
         fontSize: 48,
-        lineHeight: 52, // Just enough to avoid clipping
+        lineHeight: 56, // Increased from 52 for better vertical clearance
         letterSpacing: 2,
         textTransform: 'uppercase',
     },
     h2: {
         fontFamily: 'Bangers_400Regular',
         fontSize: 32,
-        lineHeight: 36,
+        lineHeight: 40, // Increased from 36
         letterSpacing: 1.5,
     },
     h3: {
         fontFamily: 'Bangers_400Regular',
         fontSize: 24,
-        lineHeight: 28,
+        lineHeight: 32, // Increased from 28
         letterSpacing: 1,
     },
     label: {

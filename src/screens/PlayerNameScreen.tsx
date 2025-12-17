@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        height: 50,
+        height: 60, // FINAL: Increased from 50 to prevent font clipping
         backgroundColor: 'white',
         borderRadius: BORDER_RADIUS,
         borderWidth: BORDER_WIDTH,
