@@ -177,7 +177,7 @@ export const GameScreen = () => {
                     <View style={styles.modalContent}>
                         {!selectedPeekPlayer ? (
                             <>
-                                <ComicText variant="h3" style={{ marginBottom: 20 }} numberOfLines={1} adjustsFontSizeToFit>SIAPA KAMU?</ComicText>
+                                <ComicText variant="h3" style={{ marginBottom: 20, textAlign: 'center', width: '100%' }} numberOfLines={1} adjustsFontSizeToFit>SIAPA KAMU?</ComicText>
                                 <FlatList
                                     data={players.filter(p => p.isAlive)}
                                     keyExtractor={item => item.id}
@@ -189,25 +189,35 @@ export const GameScreen = () => {
                                             <ComicText variant="body" numberOfLines={1}>{item.name}</ComicText>
                                         </TouchableOpacity>
                                     )}
+                                    style={{ width: '100%', maxHeight: 300 }}
                                 />
-                                <ComicButton title="CANCEL" onPress={() => setPeekModalVisible(false)} variant="secondary" style={{ marginTop: 20 }} />
+                                <ComicButton title="CANCEL" onPress={() => setPeekModalVisible(false)} variant="secondary" style={{ marginTop: 20, width: '100%' }} />
                             </>
                         ) : !isPeekRevealed ? (
                             <>
-                                <ComicText variant="h2" color={COLORS.accent} numberOfLines={1}>STOP!</ComicText>
-                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20 }} numberOfLines={2}>
+                                <ComicText variant="h2" color={COLORS.accent} numberOfLines={1} adjustsFontSizeToFit style={{ width: '100%', textAlign: 'center' }}>STOP!</ComicText>
+                                <ComicText variant="body" style={{ textAlign: 'center', marginVertical: 20, width: '100%' }} numberOfLines={2}>
                                     Oper HP ke <ComicText variant="h3">{selectedPeekPlayer.name}</ComicText>
                                 </ComicText>
-                                <ComicButton title="SAYA SUDAH PEGANG HP" onPress={handlePeekReveal} />
-                                <ComicButton title="BATAL" onPress={() => setSelectedPeekPlayer(null)} variant="secondary" style={{ marginTop: 10 }} />
+                                <ComicButton title="SAYA SUDAH PEGANG HP" onPress={handlePeekReveal} style={{ width: '100%' }} />
+                                <ComicButton title="BATAL" onPress={() => setSelectedPeekPlayer(null)} variant="secondary" style={{ marginTop: 10, width: '100%' }} />
                             </>
                         ) : (
                             <>
-                                <ComicText variant="h3" numberOfLines={1} adjustsFontSizeToFit>KATAMU ADALAH:</ComicText>
+                                <ComicText variant="h3" numberOfLines={1} adjustsFontSizeToFit style={{ width: '100%', textAlign: 'center' }}>KATAMU ADALAH:</ComicText>
                                 <View style={styles.wordBox}>
-                                    <ComicText variant="h1" color={COLORS.primary} outline adjustsFontSizeToFit numberOfLines={1}>{selectedPeekPlayer.word}</ComicText>
+                                    <ComicText
+                                        variant="h1"
+                                        color={COLORS.primary}
+                                        outline
+                                        adjustsFontSizeToFit
+                                        numberOfLines={1}
+                                        style={{ width: '100%', textAlign: 'center' }}
+                                    >
+                                        {selectedPeekPlayer.word}
+                                    </ComicText>
                                 </View>
-                                <ComicButton title="TUTUP SEKARANG" onPress={handlePeekClose} />
+                                <ComicButton title="TUTUP SEKARANG" onPress={handlePeekClose} style={{ width: '100%' }} />
                             </>
                         )}
                     </View>
@@ -290,7 +300,7 @@ const styles = StyleSheet.create({
     wordBox: {
         backgroundColor: 'black',
         paddingVertical: 60, // EMERGENCY: Match RoleRevealScreen
-        paddingHorizontal: 30, // EMERGENCY: Match RoleRevealScreen
+        paddingHorizontal: 10, // FINAL: Reduced to 10 to match RoleRevealScreen fix
         borderRadius: BORDER_RADIUS,
         marginVertical: 10,
         width: '80%',

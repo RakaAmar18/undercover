@@ -31,8 +31,11 @@ export const generatePlayers = (settings: GameSettings, wordPair: WordPair): Pla
     for (let i = 0; i < undercoverCount; i++) roles.push('UNDERCOVER');
     for (let i = 0; i < mrWhiteCount; i++) roles.push('MR_WHITE');
 
-    // Shuffle roles
-    roles = roles.sort(() => Math.random() - 0.5);
+    // Shuffle roles using Fisher-Yates algorithm for better randomness
+    for (let i = roles.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [roles[i], roles[j]] = [roles[j], roles[i]];
+    }
 
     return roles.map((role, index) => ({
         id: `player-${index + 1}`,

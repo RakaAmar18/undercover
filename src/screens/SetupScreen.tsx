@@ -50,7 +50,15 @@ export const SetupScreen = () => {
     // Effective count
     const actualMrWhite = hasMrWhite ? mrWhite : 0;
 
-    const isValid = totalPlayers > (undercovers + actualMrWhite + 1);
+    // VALIDATION: Civilians MUST be greater than Bad Guys
+    // i.e. Total > 2 * BadGuys. If Total=4 and Bad=2 -> Civ=2. Bad >= Civ (Unfair/Instant Win).
+    // Improved Logic: Civilians > BadGuys + 0 (strict majority) or just ensure BadGuys < Civilians.
+    // BadGuys = undercovers + actualMrWhite
+    // Civilians = totalPlayers - BadGuys
+    // We want Civilians > BadGuys
+    // totalPlayers - BadGuys > BadGuys
+    // totalPlayers > 2 * BadGuys
+    const isValid = totalPlayers > 2 * (undercovers + actualMrWhite);
 
     const handleStart = () => {
         navigation.navigate('PlayerName', {
