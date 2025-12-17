@@ -30,17 +30,30 @@ export const ResultScreen = () => {
                 <View style={styles.card}>
                     <ComicText variant="h3" style={{ marginBottom: 15, textDecorationLine: 'underline', textAlign: 'center', paddingHorizontal: 10 }} numberOfLines={1} adjustsFontSizeToFit>MISSION REPORT</ComicText>
                     <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
-                        {players.map(p => (
-                            <View key={p.id} style={[styles.row, p.role !== 'CIVILIAN' && styles.impostorRow]}>
-                                <View style={{ flex: 1, paddingRight: 5 }}>
-                                    <ComicText variant="body" numberOfLines={1} adjustsFontSizeToFit style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
-                                    <ComicText variant="label" color={COLORS.gray} numberOfLines={1}>{p.role}</ComicText>
+                        {players.map(p => {
+                            const isWinner = (winner === 'CIVILIAN' && p.role === 'CIVILIAN') || (winner === 'UNDERCOVER' && p.role !== 'CIVILIAN');
+
+                            const rowStyle = [styles.row];
+                            if (isWinner) {
+                                if (winner === 'CIVILIAN') {
+                                    rowStyle.push(styles.civilianWinRow);
+                                } else {
+                                    rowStyle.push(styles.impostorRow);
+                                }
+                            }
+
+                            return (
+                                <View key={p.id} style={rowStyle}>
+                                    <View style={{ flex: 1, paddingRight: 5 }}>
+                                        <ComicText variant="body" numberOfLines={1} adjustsFontSizeToFit style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
+                                        <ComicText variant="label" color={COLORS.gray} numberOfLines={1}>{p.role}</ComicText>
+                                    </View>
+                                    <View style={styles.wordBadge}>
+                                        <ComicText variant="body" color="white" adjustsFontSizeToFit numberOfLines={1}>{p.word}</ComicText>
+                                    </View>
                                 </View>
-                                <View style={styles.wordBadge}>
-                                    <ComicText variant="body" color="white" adjustsFontSizeToFit numberOfLines={1}>{p.word}</ComicText>
-                                </View>
-                            </View>
-                        ))}
+                            );
+                        })}
                     </ScrollView>
 
                     <ComicButton
@@ -106,6 +119,10 @@ const styles = StyleSheet.create({
     impostorRow: {
         backgroundColor: '#FFF0F5', // Light pinkish for bad guys
         borderColor: COLORS.accent,
+    },
+    civilianWinRow: {
+        backgroundColor: '#E8F5E9', // Light green
+        borderColor: COLORS.success,
     },
     wordBadge: {
         backgroundColor: 'black',
