@@ -33,17 +33,11 @@ export const ResultScreen = () => {
                         {players.map(p => {
                             const isWinner = (winner === 'CIVILIAN' && p.role === 'CIVILIAN') || (winner === 'UNDERCOVER' && p.role !== 'CIVILIAN');
 
-                            const rowStyle = [styles.row];
-                            if (isWinner) {
-                                if (winner === 'CIVILIAN') {
-                                    rowStyle.push(styles.civilianWinRow);
-                                } else {
-                                    rowStyle.push(styles.impostorRow);
-                                }
-                            }
-
                             return (
-                                <View key={p.id} style={rowStyle}>
+                                <View key={p.id} style={[
+                                    styles.row,
+                                    isWinner && (winner === 'CIVILIAN' ? styles.civilianWinRow : styles.impostorRow)
+                                ]}>
                                     <View style={{ flex: 1, paddingRight: 5 }}>
                                         <ComicText variant="body" numberOfLines={1} adjustsFontSizeToFit style={{ fontWeight: 'bold' }}>{p.name}</ComicText>
                                         <ComicText variant="label" color={COLORS.gray} numberOfLines={1}>{p.role}</ComicText>
