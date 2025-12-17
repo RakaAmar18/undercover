@@ -59,16 +59,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 60,
         transform: [{ rotate: '-5deg' }], // Jaunty angle
-        paddingHorizontal: 5, // FINAL: Reduced from 20 to prevent text from being cut off
+        paddingHorizontal: 10, // Restored slightly since we reduced font size
     },
     title: {
-        fontSize: 64,
-        lineHeight: 100, // FINAL: Increased from 95 - R was still clipping
+        fontSize: 56, // Reduced from 64 to prevent 'R' clipping
+        lineHeight: 60, // Adjusted for new font size
+        width: '100%', // Ensure it knows its bounds
+        textAlign: 'center',
     },
     titleBottom: {
-        fontSize: 64,
-        lineHeight: 100, // FINAL: Increased from 95
-        marginTop: -35, // Adjust overlap for new lineHeight
+        fontSize: 56, // Reduced from 64
+        lineHeight: 60, // Adjusted for new font size
+        marginTop: -10, // Adjusted overlap for new sizes
+        width: '100%',
+        textAlign: 'center',
     },
     subtitle: {
         marginTop: 10,

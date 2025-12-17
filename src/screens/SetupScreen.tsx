@@ -92,7 +92,7 @@ export const SetupScreen = () => {
                         style={[styles.toggleBtn, hasMrWhite ? styles.toggleOn : styles.toggleOff]}
                         onPress={() => setHasMrWhite(!hasMrWhite)}
                     >
-                        <ComicText variant="h3" color={hasMrWhite ? 'white' : COLORS.text} numberOfLines={1} adjustsFontSizeToFit>
+                        <ComicText variant="h3" color={hasMrWhite ? 'white' : COLORS.text} numberOfLines={1} adjustsFontSizeToFit style={{ fontSize: 20, lineHeight: 24 }}>
                             {hasMrWhite ? 'YES' : 'NO'}
                         </ComicText>
                     </TouchableOpacity>
@@ -193,11 +193,11 @@ const styles = StyleSheet.create({
     },
     toggleBtn: {
         // paddingVertical: 12, // REMOVED: Caused clipping with large font
-        paddingHorizontal: 10, // Reduced from 20 to ensure text fits
+        paddingHorizontal: 5,
         borderRadius: 25,
         borderWidth: 2,
         borderColor: 'black',
-        width: 90,
+        width: 100, // Increased from 90 to 100
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
